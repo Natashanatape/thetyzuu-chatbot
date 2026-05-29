@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+.cb-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#8B6F47,#A0826D);border-radius:50%;display:flex!important;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:9999;color:#fff}
+.cb-btn:hover{transform:scale(1.1)}
+.cb-box{position:fixed;bottom:90px;right:20px;width:380px;height:550px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:none;flex-direction:column;z-index:9998;overflow:hidden}
+.cb-box.active{display:flex}
+.cb-head{background:linear-gradient(135deg,#8B6F47,#A0826D);color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center}
+.cb-avatar{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.cb-close{background:0;border:0;color:#fff;font-size:28px;cursor:pointer}
+.cb-msgs{flex:1;padding:20px;overflow-y:auto;background:#F5F1ED}
+.msg{margin-bottom:16px;display:flex}
+.msg-txt{max-width:75%;padding:12px 16px;border-radius:12px;line-height:1.5;font-size:14px}
+.bot .msg-txt{background:#fff;color:#333;box-shadow:0 2px 4px rgba(0,0,0,.05)}
+.user{justify-content:flex-end}
+.user .msg-txt{background:linear-gradient(135deg,#8B6F47,#A0826D);color:#fff}
+.cb-quick{padding:12px 20px;display:flex;gap:8px;flex-wrap:wrap;background:#fff;border-top:1px solid #E8E0D5}
+.qbtn{padding:8px 16px;background:#F5F1ED;border:1px solid #D4C4B0;border-radius:20px;font-size:13px;cursor:pointer;color:#5D4E37}
+.qbtn:hover{background:#8B6F47;color:#fff}
+.cb-input{padding:16px 20px;background:#fff;border-top:1px solid #E8E0D5;display:flex;gap:10px}
+.cb-input input{flex:1;padding:12px 16px;border:1px solid #D4C4B0;border-radius:24px;font-size:14px;outline:0}
+.cb-input button{width:44px;height:44px;background:linear-gradient(135deg,#8B6F47,#A0826D);border:0;border-radius:50%;color:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="cb-btn" id="btn">💬</div>
+<div class="cb-box" id="box">
+<div class="cb-head">
+<div style="display:flex;align-items:center;gap:12px">
+<div class="cb-avatar">🐾</div>
+<div><h3 style="font-size:16px;margin-bottom:2px">Tyzuu Buddy</h3><span style="font-size:12px">Online</span></div>
+</div>
+<button class="cb-close" id="cls">×</button>
+</div>
+<div class="cb-msgs" id="msgs">
+<div class="msg bot"><div class="msg-txt">👋 Welcome! I'm Tyzuu Buddy 🐾<br>Ask me about products, shipping, returns!</div></div>
+</div>
+<div class="cb-quick">
+<button class="qbtn" onclick="ask('products')">Products</button>
+<button class="qbtn" onclick="ask('shipping')">Shipping</button>
+<button class="qbtn" onclick="ask('returns')">Returns</button>
+<button class="qbtn" onclick="ask('contact')">Contact</button>
+</div>
+<div class="cb-input">
+<input id="inp" placeholder="Type your message...">
+<button onclick="send()">➤</button>
+</div>
+</div>
+<script>
+const btn=document.getElementById('btn'),box=document.getElementById('box'),cls=document.getElementById('cls'),inp=document.getElementById('inp'),msgs=document.getElementById('msgs');
+const faq={products:"We have everything! 🐾\n🐕 Dog & Cat Clothing\n🍖 Pet Food & Treats\n🥣 Bowls & Feeders\n🎾 Toys",shipping:"🚚 Shipping:\n• Standard: 5-7 days\n• Express: 2-3 days\n• FREE on orders ₹999+",returns:"🔄 Returns:\n• 7-day window\n• Unused with tags\n• Refund in 5-7 days",contact:"📞 Contact:\nEmail: support@thetyzuushop.com\nPhone: +91-XXXXXXXXXX\nHours: Mon-Sat, 9AM-6PM"};
+btn.onclick=()=>{box.classList.add('active');btn.style.display='none'};
+cls.onclick=()=>{box.classList.remove('active');btn.style.display='flex'};
+inp.onkeypress=(e)=>{if(e.key==='Enter')send()};
+function ask(q){inp.value=q;send()}
+function send(){const m=inp.value.trim();if(!m)return;add(m,'user');inp.value='';setTimeout(()=>add(reply(m),'bot'),500)}
+function add(t,s){const d=document.createElement('div');d.className='msg '+s;d.innerHTML='<div class="msg-txt">'+t.replace(/\n/g,'<br>')+'</div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+function reply(m){m=m.toLowerCase();if(faq[m])return faq[m];if(m.match(/product|sell|category/))return faq.products;if(m.match(/ship|deliver/))return faq.shipping;if(m.match(/return|refund/))return faq.returns;if(m.match(/contact|support|help/))return faq.contact;if(m.match(/dog|puppy/))return"Dog parent! 🐶\nWe have clothing, food, toys & more!";if(m.match(/cat|kitten/))return"Cat lover! 🐱\nWe have clothing, food, toys & more!";return"I'm here to help! 🐾\nAsk about:\n• Products\n• Shipping\n• Returns\n• Contact"}
+</script>
+</body>
+</html>

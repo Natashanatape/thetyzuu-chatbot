@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tyzuu Shop</title>
+    <link rel="stylesheet" href="chatbot-style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #F5F1ED;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="header-content">
+                <div class="bot-avatar">🐾</div>
+                <div>
+                    <h3>Tyzuu Buddy</h3>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+            <button class="close-btn" id="closeBtn">&times;</button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    👋 Welcome to The Tyzuu Shop! I'm Tyzuu Buddy, your pet shopping companion. 🐾<br><br>
+                    I can help with products, sizing, shipping, returns, and pet care questions. How can I help you today?
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-replies" id="quickReplies">
+            <button class="quick-reply-btn" data-query="products">Products</button>
+            <button class="quick-reply-btn" data-query="shipping">Shipping</button>
+            <button class="quick-reply-btn" data-query="returns">Returns</button>
+            <button class="quick-reply-btn" data-query="contact">Contact</button>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="chatbot-script.js"></script>
+</body>
+</html>

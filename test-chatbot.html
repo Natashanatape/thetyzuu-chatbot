@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test - The Tyzuu Shop</title>
+    <link rel="stylesheet" href="chatbot-style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #F5F1ED, #E8E0D5);
+            min-height: 100vh;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #8B6F47;
+            margin-bottom: 20px;
+        }
+        .info {
+            background: #F5F1ED;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .info h3 {
+            color: #8B6F47;
+            margin-top: 0;
+        }
+        .arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 100px;
+            font-size: 48px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🐾 The Tyzuu Shop - Chatbot Test Page</h1>
+        
+        <div class="info">
+            <h3>✅ Chatbot is Ready!</h3>
+            <p>Look at the <strong>bottom-right corner</strong> of your screen.</p>
+            <p>You should see a <strong>brown circular button</strong> with a chat icon.</p>
+            <p><strong>Click it</strong> to open Tyzuu Buddy chatbot!</p>
+        </div>
+
+        <div class="info">
+            <h3>🧪 Test Questions:</h3>
+            <ul>
+                <li>"What products do you sell?"</li>
+                <li>"I need a jacket for my dog"</li>
+                <li>"How much is shipping?"</li>
+                <li>"What's your return policy?"</li>
+                <li>"I need help with sizing"</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>📋 Features:</h3>
+            <ul>
+                <li>Smart auto-reply system</li>
+                <li>15+ FAQ categories</li>
+                <li>Context-aware responses</li>
+                <li>Quick reply buttons</li>
+                <li>Mobile responsive</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="arrow">👉</div>
+
+    <!-- Chatbot Toggle Button -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="header-content">
+                <div class="bot-avatar">🐾</div>
+                <div>
+                    <h3>Tyzuu Buddy</h3>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+            <button class="close-btn" id="closeBtn">&times;</button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    👋 Welcome to The Tyzuu Shop! I'm Tyzuu Buddy, your pet shopping companion. 🐾<br><br>
+                    I can help with products, sizing, shipping, returns, and pet care questions. How can I help you today?
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-replies" id="quickReplies">
+            <button class="quick-reply-btn" data-query="products">Products</button>
+            <button class="quick-reply-btn" data-query="shipping">Shipping</button>
+            <button class="quick-reply-btn" data-query="returns">Returns</button>
+            <button class="quick-reply-btn" data-query="contact">Contact</button>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="chatbot-script.js"></script>
+</body>
+</html>
