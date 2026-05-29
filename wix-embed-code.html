@@ -1,0 +1,39 @@
+<!-- Copy this ENTIRE code and paste in Wix Custom Code -->
+
+<style>
+.cb-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,#8B6F47,#A0826D);border-radius:50%;display:flex!important;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:9999;color:#fff;font-size:24px}
+.cb-box{position:fixed;bottom:90px;right:20px;width:380px;height:550px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:none;flex-direction:column;z-index:9998}
+.cb-box.active{display:flex}
+.cb-head{background:linear-gradient(135deg,#8B6F47,#A0826D);color:#fff;padding:20px;display:flex;justify-content:space-between}
+.cb-msgs{flex:1;padding:20px;overflow-y:auto;background:#F5F1ED}
+.msg{margin-bottom:16px}
+.msg-txt{padding:12px 16px;border-radius:12px;font-size:14px;background:#fff;display:inline-block;max-width:75%}
+.user{text-align:right}
+.user .msg-txt{background:linear-gradient(135deg,#8B6F47,#A0826D);color:#fff}
+.cb-input{padding:16px 20px;background:#fff;display:flex;gap:10px}
+.cb-input input{flex:1;padding:12px;border:1px solid #D4C4B0;border-radius:24px;outline:0}
+.cb-input button{width:44px;height:44px;background:linear-gradient(135deg,#8B6F47,#A0826D);border:0;border-radius:50%;color:#fff;cursor:pointer;font-size:18px}
+</style>
+
+<div class="cb-btn" id="cbBtn">💬</div>
+<div class="cb-box" id="cbBox">
+<div class="cb-head">
+<div><b>🐾 Tyzuu Buddy</b><br><small>Online</small></div>
+<button onclick="document.getElementById('cbBox').classList.remove('active');document.getElementById('cbBtn').style.display='flex'" style="background:0;border:0;color:#fff;font-size:28px;cursor:pointer">×</button>
+</div>
+<div class="cb-msgs" id="cbMsgs">
+<div class="msg"><div class="msg-txt">👋 Hi! I'm Tyzuu Buddy 🐾<br>Ask me about products, shipping, returns!</div></div>
+</div>
+<div class="cb-input">
+<input id="cbInp" placeholder="Type your message...">
+<button onclick="cbSend()">➤</button>
+</div>
+</div>
+
+<script>
+document.getElementById('cbBtn').onclick=()=>{document.getElementById('cbBox').classList.add('active');document.getElementById('cbBtn').style.display='none'};
+document.getElementById('cbInp').onkeypress=(e)=>{if(e.key==='Enter')cbSend()};
+function cbSend(){const m=document.getElementById('cbInp').value.trim();if(!m)return;cbAdd(m,'user');document.getElementById('cbInp').value='';setTimeout(()=>cbAdd(cbReply(m),''),500)}
+function cbAdd(t,s){const d=document.createElement('div');d.className='msg '+s;d.innerHTML='<div class="msg-txt">'+t.replace(/\n/g,'<br>')+'</div>';document.getElementById('cbMsgs').appendChild(d);document.getElementById('cbMsgs').scrollTop=999999}
+function cbReply(m){m=m.toLowerCase();if(m.match(/product|sell|category/))return"We have everything! 🐾<br>🐕 Dog & Cat Clothing<br>🍖 Pet Food & Treats<br>🥣 Bowls & Feeders<br>🎾 Toys";if(m.match(/ship|deliver/))return"🚚 Shipping:<br>• Standard: 5-7 days<br>• Express: 2-3 days<br>• FREE on orders ₹999+";if(m.match(/return|refund/))return"🔄 Returns:<br>• 7-day window<br>• Unused with tags<br>• Refund in 5-7 days";if(m.match(/contact|support|help|email|phone/))return"📞 Contact:<br>Email: support@thetyzuushop.com<br>Phone: +91-XXXXXXXXXX<br>Hours: Mon-Sat, 9AM-6PM";if(m.match(/dog|puppy/))return"Dog parent! 🐶<br>We have clothing, food, toys & more!";if(m.match(/cat|kitten/))return"Cat lover! 🐱<br>We have clothing, food, toys & more!";if(m.match(/size|sizing|measure/))return"📏 Sizing Guide:<br>Small: Up to 5kg<br>Medium: 5-15kg<br>Large: 15kg+<br>Measure neck to tail & chest!";return"I'm here to help! 🐾<br>Ask about:<br>• Products<br>• Shipping<br>• Returns<br>• Contact"}
+</script>
